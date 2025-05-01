@@ -1,0 +1,26 @@
+# Node modules
+node_modules/
+
+# Ortam değişkenleri
+.env
+
+# Log dosyaları
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Derleme çıktı klasörleri (TypeScript, Babel, vs.)
+dist/
+build/
+lib/
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Test coverage raporları
+coverage/
+
+# IDE / işletim sistemi artefaktları
+.vscode/
+.DS_Store
+Thumbs.db
