@@ -30,16 +30,31 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <Box sx={{ maxWidth: 400, mx: 'auto', mt: 8 }}>
-      <Typography variant="h4" gutterBottom>
-        Login
-      </Typography>
-      {error && <Alert severity="error">{error}</Alert>}
+    <Box
+      sx={{
+        
+        width: '100vw',
+        height: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
       <Box
         component="form"
         onSubmit={handleSubmit}
-        sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}
+        sx={{
+          maxWidth: 400,
+          width: '90%',         // responsive on narrow screens
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 2,
+        }}
       >
+        <Typography variant="h4" gutterBottom>
+          Login
+        </Typography>
+        {error && <Alert severity="error">{error}</Alert>}
         <TextField
           label="Username"
           value={username}

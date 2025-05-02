@@ -1,21 +1,22 @@
+// client/src/main.tsx
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { CssBaseline, ThemeProvider } from '@mui/material';
-import theme from './theme/theme'; // Create this file
-import { AuthProvider } from './contexts/AuthContext'; // Create this file
-import './index.css'; // Basic global styles if needed
+import { CustomThemeProvider } from './contexts/ThemeContext'; // bizim oluşturduğumuz
+import { AuthProvider } from './contexts/AuthContext';        // daha önce oluşturduğunuz
+import './index.css';                                         // varsa global stiller
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <AuthProvider> {/* Wrap App with AuthProvider */}
-          <CssBaseline /> {/* Normalize CSS */}
+      {/* Tema yönetimi + CssBaseline burada */}
+      <CustomThemeProvider>
+        {/* Kimlik doğrulama durumu (login/logout) burada */}
+        <AuthProvider>
           <App />
         </AuthProvider>
-      </ThemeProvider>
+      </CustomThemeProvider>
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.StrictMode>
 );

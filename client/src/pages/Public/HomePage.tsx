@@ -19,7 +19,17 @@ const HomePage: React.FC = () => {
   }, []);
 
   return (
-    <Box sx={{ p: 2 }}>
+    <Box
+      component="main"
+      sx={{
+        width: '100vw',           // full viewport width
+        height: '100vh',          // full viewport height
+        boxSizing: 'border-box',  // include padding in that size
+        p: 2,
+        overflowY: 'auto'   ,      // scroll if content overflows
+        overflowX: 'hidden', 
+      }}
+    >
       <Typography variant="h3" gutterBottom>
         Blog Posts
       </Typography>
