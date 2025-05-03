@@ -1,4 +1,3 @@
-// client/src/components/Public/PostCard.tsx
 import React from 'react';
 import {
   Card,
@@ -7,75 +6,64 @@ import {
   CardContent,
   Typography,
   CardActions,
-  Button
+  Button,
+  Chip,
 } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 interface PostCardProps {
   id: string;
   title: string;
-  author: string;
   snippet: string;
-  date?: string;
+  author: string;
   imageUrl?: string;
+  date?: string;
+  tags?: string[];
 }
 
 const PostCard: React.FC<PostCardProps> = ({
   id,
   title,
-  author,
   snippet,
+  author,
+  imageUrl,
   date,
-  imageUrl
+  tags,
 }) => (
-  <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-    <CardActionArea component={Link} to={`/posts/${id}`} sx={{ flexGrow: 1 }}>
-      {/* Görsel yoksa placeholder */}
-      {imageUrl ? (
-        <CardMedia
-          component="img"
-          height="140"
-          image={imageUrl}
-          alt={title}
-        />
-      ) : (
-        <CardMedia
-          component="div"
-          sx={{
-            height: 140,
-            backgroundColor: 'action.hover',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'text.disabled'
-          }}
-        >
-          No Image
-        </CardMedia>
+  <Card
+    sx={{
+      height: '100%',
+      display: 'flex',
+      flexDirection: 'column',
+      transition: 'transform 0.2s',
+      '&:hover': { transform: 'translateY(-5px)', boxShadow: 6 },
+    }}
+  >
+    <CardActionArea component={Link} to={`/posts/${id}`}>  
+      {imageUrl && (
+        <CardMedia component="img" height="200" image={imageUrl} alt={title} />
       )}
-
       <CardContent>
-        <Typography variant="h6" gutterBottom>
-          {title}
-        </Typography>
         {date && (
-          <Typography variant="caption" color="text.secondary">
-            {new Date(date).toLocaleDateString()}
+          <Typography variant="overline" color="textSecondary">
+            {date}
           </Typography>
         )}
-        <Typography variant="body2" sx={{ mt: 1 }}>
+        <Typography gutterBottom variant="h6" component="h2">
+          {title}
+        </Typography>
+        <Typography variant="body2" color="textSecondary">
           {snippet}
         </Typography>
       </CardContent>
     </CardActionArea>
-
-    <CardActions>
-      <Button size="small" component={Link} to={`/posts/${id}`}>
+    <CardActions sx={{ mt: 'auto', px: 2, pb: 2 }}>
+      {tags?.map((tag) => (
+        <Chip key={tag} label={tag} size="small" sx={{ mr: 1 }} />
+      ))}
+      <Button size="small" component={Link} to={`/posts/${id}`} sx={{ ml: 'auto' }}>
         Read More
       </Button>
-      <Typography variant="caption" sx={{ ml: 'auto', pr: 1 }}>
-        {author}
-      </Typography>
     </CardActions>
   </Card>
 );
