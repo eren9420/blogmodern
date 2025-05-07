@@ -5,6 +5,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { CssBaseline } from '@mui/material';
 import { CustomThemeProvider } from './contexts/ThemeContext'; // bizim oluşturduğumuz
 import { AuthProvider } from './contexts/AuthContext';
+import './styles/global.css'
 
 import './index.css';
 

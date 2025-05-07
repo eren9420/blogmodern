@@ -38,6 +38,7 @@ const LoginPage: React.FC = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
+        overflowX: 'hidden', 
       }}
     >
       <Box
